@@ -3,33 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fserlut <fserlut@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gutorres <gutorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 17:02:04 by fserlut           #+#    #+#             */
-/*   Updated: 2019/10/14 17:13:08 by fserlut          ###   ########.fr       */
+/*   Updated: 2019/10/19 17:53:09 by gutorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	move_x_back(t_struct *all_fig)
-{
-	int i;
-
-	while (is_null_pos(all_fig->x) == 1)
-	{
-		i = 0;
-		while (i <= 3)
-		{
-			all_fig->x[i]--;
-			i++;
-		}
-	}
-}
-
 void	move_fig_in_struct(t_struct *all_fig)
 {
-	int i;
+	int	i;
 
 	while (is_null_pos(all_fig->x) == 1)
 	{
@@ -51,9 +36,9 @@ void	move_fig_in_struct(t_struct *all_fig)
 	}
 }
 
-int	is_null_pos(int *coord)
+int		is_null_pos(int *coord)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 3)

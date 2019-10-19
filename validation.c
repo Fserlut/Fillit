@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fserlut <fserlut@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gutorres <gutorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:14:27 by fserlut           #+#    #+#             */
-/*   Updated: 2019/10/16 14:49:04 by fserlut          ###   ########.fr       */
+/*   Updated: 2019/10/19 17:42:01 by gutorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		valid_grill_point_n(t_one_fig one_fig)
+int		valid_grill_point_n(t_struct_one_fig one_fig)
 {
 	int	i;
 	int	grill;
@@ -35,12 +35,12 @@ int		valid_grill_point_n(t_one_fig one_fig)
 			bsn++;
 		i++;
 	}
-	if (point == 12 && grill == 4 && (bsn == 5 || bsn == 3))
+	if (point == 12 && grill == 4 && (bsn == 5 || bsn == 4))
 		return (1);
 	return (-1);
 }
 
-int		valid_figure(t_one_fig one_fig)
+int		valid_figure(t_struct_one_fig one_fig)
 {
 	int i;
 	int c_sub;
