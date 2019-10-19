@@ -6,11 +6,13 @@
 #    By: fserlut <fserlut@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/04 14:46:22 by fserlut           #+#    #+#              #
-#    Updated: 2019/10/08 13:43:25 by fserlut          ###   ########.fr        #
+#    Updated: 2019/10/19 17:19:12 by fserlut          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = fillit
+
+NAME_LIB = libft.a
 
 NAME_FILE = ./*.c
 
@@ -22,37 +24,22 @@ HEAD_FOLDER = ./libft
 
 FLAGC = -Wall -Wextra -Werror
 
-all: create_lib fillit
+all: $(NAME)
 
-create_lib:
+$(NAME):
 	gcc -I $(HEAD_FOLDER) -c $(SRC) $(FLAGC)
-	ar rc $(NAME) $(FILE_O)
-	ranlib $(NAME)
-	/bin/rm -f *.o
-	/bin/rm -f *.o~
-	/bin/rm -f *.h~
-	/bin/rm -f *.c~
-
-fillit:
+	ar rc $(NAME_LIB) $(FILE_O)
+	ranlib $(NAME_LIB)
 	gcc $(FLAGC) -c $(NAME_FILE)
-	gcc ./$(NAME) ./$(FILE_O) -o fillit
-	/bin/rm -f *.o
-	/bin/rm -f *.o~
-	/bin/rm -f *.h~
-	/bin/rm -f *.c~
+	gcc ./$(NAME_LIB) ./$(FILE_O) -o $(NAME)
 
-re_fillit:
-	/bin/rm -f fillit
-	gcc $(FLAGC) ./$(NAME) ./*.c
-	
 clean:
 	/bin/rm -f *.o
 	/bin/rm -f *.o~
 	/bin/rm -f *.h~
 	/bin/rm -f *.c~
-	/bin/rm -f fillit
 
 fclean: clean
-	/bin/rm -rf $(NAME) fillit *~ 
+	/bin/rm -rf $(NAME_LIB) $(NAME) *~ 
 
-re: fclean all fillit
+re: fclean all
