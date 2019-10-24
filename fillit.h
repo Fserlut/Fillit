@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gutorres <gutorres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fserlut <fserlut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 14:39:53 by fserlut           #+#    #+#             */
-/*   Updated: 2019/10/19 18:28:34 by gutorres         ###   ########.fr       */
+/*   Updated: 2019/10/22 00:31:43 by fserlut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int				check_param(int *coord);
 t_struct_map	*create_map(int square_s);
 void			print_map(t_struct_map new_map);
 int				is_null_pos(int *coord);
-t_struct_map	*free_old_map_cr_new(t_struct_map *old_map, int sq_s);
+t_struct_map	*free_old_map_cr_new(t_struct_map **old_map, int sq_s);
 
 #endif

@@ -5,41 +5,49 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fserlut <fserlut@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/09/04 14:46:22 by fserlut           #+#    #+#              #
-#    Updated: 2019/10/19 17:19:12 by fserlut          ###   ########.fr        #
+#    Created: 2019/09/01 13:26:43 by fserlut           #+#    #+#              #
+#    Updated: 2019/10/24 14:07:26 by fserlut          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+NAME = 	fillit
 
-NAME_LIB = libft.a
+SRCS = 	main.c \
+		validation.c \
+		map.c \
+		alg.c \
+		move.c \
+		find_figure.c \
 
-NAME_FILE = ./*.c
+OBJS = 	main.o \
+		validation.o \
+		map.o \
+		alg.o \
+		move.o \
+		find_figure.o \
 
-SRC = ./libft/*.c
+FLAGS = -Wall -Wextra -Werror
 
-FILE_O = ./*.o
+LIB = make -C libft/
 
-HEAD_FOLDER = ./libft
+H_DIR = ./
 
-FLAGC = -Wall -Wextra -Werror
+LIB_DIR = ./libft/
 
 all: $(NAME)
 
 $(NAME):
-	gcc -I $(HEAD_FOLDER) -c $(SRC) $(FLAGC)
-	ar rc $(NAME_LIB) $(FILE_O)
-	ranlib $(NAME_LIB)
-	gcc $(FLAGC) -c $(NAME_FILE)
-	gcc ./$(NAME_LIB) ./$(FILE_O) -o $(NAME)
+	$(LIB)
+	gcc -c $(SRCS) -I $(H_DIR) -I $(LIB_DIR) $(FLAGS)
+	gcc $(OBJS) -o $(NAME) -L $(LIB_DIR) -lft
 
 clean:
-	/bin/rm -f *.o
-	/bin/rm -f *.o~
-	/bin/rm -f *.h~
-	/bin/rm -f *.c~
+	rm -f $(OBJS)
+	make clean -C $(LIB_DIR)
 
-fclean: clean
-	/bin/rm -rf $(NAME_LIB) $(NAME) *~ 
+fclean:
+	rm -f $(NAME)
+	rm -f $(OBJS)
+	make fclean -C $(LIB_DIR)
 
 re: fclean all

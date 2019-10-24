@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gutorres <gutorres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fserlut <fserlut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 15:36:31 by fserlut           #+#    #+#             */
-/*   Updated: 2019/10/19 17:54:48 by gutorres         ###   ########.fr       */
+/*   Updated: 2019/10/22 00:31:29 by fserlut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,18 @@
 void		place_fig(t_struct_map *map, t_struct *all_fig_coord, int c_fig)
 {
 	if (place_one_fig(map, all_fig_coord, c_fig) == 1)
+	{
 		print_map(*map);
+		while (map->sqr_size > 0)
+		{
+			ft_strdel(&(map->map_arr[map->sqr_size - 1]));
+			map->sqr_size--;
+		}
+		free(map->map_arr);
+		free(map);
+	}
 	else
-		place_fig(map = free_old_map_cr_new(map, map->sqr_size + 1), \
+		place_fig(map = free_old_map_cr_new(&map, map->sqr_size + 1), \
 			all_fig_coord, c_fig);
 }
 
